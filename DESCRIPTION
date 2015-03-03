@@ -1,0 +1,10 @@
+Package: ph525x
+Title: support functions for edX course PH525
+Version: 0.0.0
+Author: VJ Carey <stvjc@channing.harvard.edu> and others
+Description: basic functions not yet in released software
+Suggests: 
+Depends: 
+Maintainer: VJ Carey <stvjc@channing.harvard.edu>
+License: Artistic-2.0
+LazyLoad: yes
