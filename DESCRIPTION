@@ -8,9 +8,9 @@ Suggests: Homo.sapiens, TxDb.Hsapiens.UCSC.hg19.knownGene,
 	OrganismDbi, GenomicFeatures, AnnotationDbi,
 	Biobase, grid, GenomicRanges,
 	GenomeInfoDb, IRanges, S4Vectors,
-	BiocGenerics, 
+	BiocGenerics, seqc,
 	rmarkdown, knitr, weaver, BiocInstaller
-Depends: png, grid
+Depends: png, grid, Biobase
 Maintainer: VJ Carey <stvjc@channing.harvard.edu>
 License: Artistic-2.0
 LazyLoad: yes
