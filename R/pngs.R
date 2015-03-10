@@ -7,7 +7,7 @@
 prender = function(pref) {
  newf = sub("%%PREF%%", pref, "pngs/%%PREF%%.png")
  f = readPNG(system.file(newf, package="ph525x"))
- dev.off()
+ if (!(dev.cur()==1)) dev.off()
  grid.raster(f)
 }
 
