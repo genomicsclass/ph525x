@@ -1,6 +1,6 @@
 Package: ph525x
 Title: support functions for edX course PH525
-Version: 0.0.1
+Version: 0.0.4
 Author: VJ Carey <stvjc@channing.harvard.edu> and others
 Description: basic functions not yet in released software
 Suggests: Homo.sapiens, TxDb.Hsapiens.UCSC.hg19.knownGene,        
@@ -10,7 +10,7 @@ Suggests: Homo.sapiens, TxDb.Hsapiens.UCSC.hg19.knownGene,
 	GenomeInfoDb, IRanges, S4Vectors,
 	BiocGenerics, 
 	rmarkdown, knitr, weaver, BiocInstaller
-Depends: 
+Depends: png, grid
 Maintainer: VJ Carey <stvjc@channing.harvard.edu>
 License: Artistic-2.0
 LazyLoad: yes
