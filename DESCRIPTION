@@ -1,6 +1,6 @@
 Package: ph525x
 Title: support functions for edX course PH525
-Version: 0.0.4
+Version: 0.0.5
 Author: VJ Carey <stvjc@channing.harvard.edu> and others
 Description: basic functions not yet in released software
 Suggests: Homo.sapiens, TxDb.Hsapiens.UCSC.hg19.knownGene,        
