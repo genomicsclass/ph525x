@@ -4,4 +4,4 @@ export(genemodel, modPlot, modTrack)
 
 export(seqcAbst, seqcDesign, obesTitle, obesManh)
 export(esetDet1, esetDet2)
-export(dbSNPPath)
+export(dbSNPPath, viewHreads14)
