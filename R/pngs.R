@@ -12,8 +12,8 @@ prender = function(pref) {
 }
 
 seqcAbst = function() prender("seqc")
-seqcDesign = function() prender("seqcDesign")
+seqcDesign = function() prender("seqcFreeH")
 obesTitle = function() prender("obesTitle")
 obesManh = function() prender("obesManh")
-esetDet1 = function() prender("esetDet1")
+esetDet1 = function() prender("esetFreeH")
 esetDet2 = function() prender("esetDet2")
