@@ -2,7 +2,6 @@
 genemodel = function(sym, genome="hg19", annoResource=Homo.sapiens,
    getter=exonsBy, byattr="gene") {
  stopifnot(is.atomic(sym) && (length(sym)==1))
- stopifnot(genome=="hg19")
  require(deparse(substitute(annoResource)), character.only=TRUE)
  num = select(annoResource, keys=sym, keytype="SYMBOL", 
     columns=c("ENTREZID", "SYMBOL"))$ENTREZID
@@ -22,7 +21,7 @@ modTrack = function(symbol,
    getter=exonsBy, byattr="gene", expansion=0,
    collapseTranscripts="meta") {
  require(Gviz)
- m1 = genemodel(symbol)
+ m1 = genemodel(symbol, annoResource=annoResource)
  thechr = as.character(seqnames(m1)[1])
  st = min(start(m1)) - expansion
  en = max(end(m1)) + expansion
