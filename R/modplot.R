@@ -9,7 +9,12 @@ genemodel = function(sym, genome="hg19", annoResource=Homo.sapiens,
  getter(annoResource, by=byattr)[[num]]
 }
 
-getTxDb = function(x) TxDb.Hsapiens.UCSC.hg19.knownGene # PHONY ...
+getTxDb = function(x) {
+   require(deparse(substitute(x)), character.only=TRUE)
+   curtxdb = get(deparse(substitute(x)))
+   get(slot(curtxdb, "keys")[2,2]) #get(x@matrix[2,2])
+}
+   #  TxDb.Hsapiens.UCSC.hg19.knownGene # PHONY ...
    # GeneRegionTrack fails for Homo.sapiens
 
 modTrack = function(symbol,
