@@ -1,3 +1,4 @@
+import(IRanges)
 
 export(ph525x)
 export(genemodel, modPlot, modTrack)
@@ -9,3 +10,4 @@ export(getilgf, showGeneBySite)
 export(parseIDF, parseSDRF)
 export(seqc.eSet)
 export(sydhTop)
+export(plotRanges)
