@@ -3,25 +3,45 @@
 \alias{ph525x}
 \docType{package}
 \title{
-\packageTitle{ph525x}
+ph525x, extra software
 }
 \description{
-\packageDescription{ph525x}
+Software that can be used with the ph525x course that is not
+yet in a CRAN or Bioconductor package.
+
 }
 \details{
 
-The DESCRIPTION file:
-\packageDESCRIPTION{ph525x}
-\packageIndices{ph525x}
+\preformatted{
+The DESCRIPTION file: 
+
+Package: ph525x
+Title: support functions for edX course PH525
+Version: 0.0.12
+Author: VJ Carey <stvjc@channing.harvard.edu> and others
+Description: basic functions not yet in released software
+Suggests: Homo.sapiens, TxDb.Hsapiens.UCSC.hg19.knownGene,        
+	org.Hs.eg.db, GO.db, RSQLite, DBI,
+	OrganismDbi, GenomicFeatures, AnnotationDbi,
+	Biobase, grid, GenomicRanges,
+	GenomeInfoDb, IRanges, S4Vectors,
+	BiocGenerics, seqc,
+	rmarkdown, knitr, weaver, BiocInstaller
+Depends: png, grid, Biobase
+Maintainer: VJ Carey <stvjc@channing.harvard.edu>
+License: Artistic-2.0
+LazyLoad: yes
+}
+
 
 Software that can be used with the ph525x course that is not
 yet in a CRAN or Bioconductor package.
 
 }
 \author{
-\packageAuthor{ph525x}
+VJ Carey
 
-Maintainer: \packageMaintainer{ph525x}
+
 }
 %\references{
 %~~ Literature or other references for background information ~~
