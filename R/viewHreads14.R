@@ -2,7 +2,7 @@
 viewHreads14 = function( bamind=1, gene14="BCL2L2" ) {
  require(RNAseqData.HNRNPC.bam.chr14)
  require(Gviz)
- gnmod = try(genemodel(gene14))
+ gnmod = try(genemodel(gene14))  # sloppy
  if (inherits(gnmod, "try-error")) stop("can't make gene model")
  stopifnot(as.character(seqnames(gnmod))=="chr14")
  ps <- RNAseqData.HNRNPC.bam.chr14_BAMFILES

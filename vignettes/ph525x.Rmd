@@ -1,0 +1,124 @@
+---
+title: "phs525x package: complements to Bioconductor software for edX"
+author: "Vincent J. Carey, stvjc at channing.harvard.edu"
+date: "January 2016"
+output:
+  BiocStyle::pdf_document:
+    toc: yes
+    number_sections: yes
+  BiocStyle::html_document:
+    highlight: pygments
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+<!--
+%\VignetteEngine{knitr::rmarkdown}
+%\VignetteIndexEntry{ph525x -- Bioconductor complements for edX }
+-->
+
+```{r style, echo = FALSE, results = 'asis'}
+BiocStyle::markdown()
+```
+```{r bib, echo = FALSE, results = 'hide',eval=FALSE}
+library(knitcitations)
+library(bibtex)
+allbib = read.bibtex("allbib.bib")
+```
+
+# Introduction
+
+This document describes some of the software and image interfaces
+provided in the ph525x package as a convenience for
+teaching and learning about Bioconductor in the edX
+PH525 series.
+
+# Design and object sketches
+
+## A simple schematic of the SEQC study
+
+Sometimes it is easier to use a sketchpad to describe an
+experimental design.  In the SEQC study (citation given
+in the figure below) two types of mRNA are analyzed
+separately and in specific mixtures.  UHRR is Universal
+Human Reference RNA, and HBRR is Human Brain Reference RNA.
+```{r lk1,fig=TRUE}
+library(ph525x)
+seqcDesign()
+```
+
+The abstract from the study can be seen via
+```{r lkab,eval=FALSE}
+seqcAbst()
+```
+
+## The ExpressionSet schema
+
+We use a composition of matrix and data.frame objects in an
+S4 class to represent information about microarray
+experiments in a coherent way.
+
+```{r lk2,fig=TRUE}
+esetDet1()
+```
+
+# A Manhattan plot
+
+The Manhattan plot is a classic approach to communicating
+simple statistical relationships between variation in
+DNA content (usually at the nucleotide level, focusing on
+single nucleotide polymorphisms, SNPs) and variation in
+disease risk or phenotypes measured in a cohort or population.
+
+You can use this command to visualize such a plot,
+Figure 1 from [Shungin et al. 2015](http://www.nature.com/nature/journal/v518/n7538/full/nature14132.html); we don't do it here to avoid concerns with fairness of use.
+
+```{r lk3,eval=FALSE}
+obesManh()
+```
+
+Using Bioconductor you can create Manhattan plots fairly easily.
+For example, in connection with the EMBL GWAS catalog, we have
+
+```{r lkman,fig=TRUE}
+library(gwascat)
+data(ebicat38)
+seqlevelsStyle(ebicat38) = "UCSC"
+traitsManh(ebicat38)
+```
+
+# A view of RNA-seq alignments
+
+It is good to have a quick way of assessing pileups of alignments
+over transcripts.  In this case we have data from the HNRNPC
+knockdown study of [Zarnack et al.](http://dx.doi.org/10.1016/j.cell.2012.12.023)
+in an [Experimental Data package](http://bioconductor.org/packages/RNAseqData.HNRNPC.bam.chr14/).  This function uses the [Gviz](http://bioconductor.org/packages/Gviz/) package on an extract from a BAM file provided by the
+experimenters in the ArrayExpress archive.
+```{r demoh,fig=TRUE}
+viewHreads14()
+```
+
+# A view of the Epigenomics road map resources
+
+Consortia have been formed to produce experimental results
+on the tendency of proteins that have been identified as
+transcription factors to bind to DNA extracted from diverse
+cell lines.  Understanding the vocabularies and data formats
+for these experimental results takes effort; this display
+schematizes a small fraction of available results.
+
+```{r sydh,fig=TRUE}
+sydhTop()
+```
+
+More information on DNA-binding experiments in epigenomics
+can be obtained from the [AnnotationHub](http://bioconductor.org/packages/AnnotationHub/) and [erma](http://bioconductor.org/packages/erma) packages.
+The [erma vignette](http://bioconductor.org/packages/release/bioc/vignettes/erma/inst/doc/erma.html) illustrates how R can interface to the web
+browser to provide interactive tables of annotation.
+
+# Summary
+
+This package contains utilities for simplifying certain aspects
+of teaching Bioconductor in edX.  It will be updated and enhanced
+regularly as new concepts are addressed.

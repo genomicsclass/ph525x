@@ -1,5 +1,5 @@
 
-genemodel = function(sym, genome="hg19", annoResource=Homo.sapiens,
+genemodelOLD = function(sym, genome="hg19", annoResource=Homo.sapiens,
    getter=exonsBy, byattr="gene") {
  stopifnot(is.atomic(sym) && (length(sym)==1))
  if (!exists(dsa <- deparse(substitute(annoResource))))
@@ -8,6 +8,22 @@ genemodel = function(sym, genome="hg19", annoResource=Homo.sapiens,
     columns=c("ENTREZID", "SYMBOL"))$ENTREZID
  getter(annoResource, by=byattr)[[num]]
 }
+
+genemodel = function (key, keytype = "SYMBOL", annoResource = Homo.sapiens) 
+{
+    oblig = c("EXONCHROM", "EXONSTART", "EXONEND", "EXONSTRAND", 
+        "EXONID")
+    addrs = AnnotationDbi::select(annoResource, keys = key, keytype = keytype, 
+        columns = oblig)
+    ans = GRanges(addrs$EXONCHROM, IRanges(addrs$EXONSTART, addrs$EXONEND), 
+        strand = addrs$EXONSTRAND, exon_id = addrs$EXONID)
+    mcols(ans)[[keytype]] = key
+    useq = unique(as.character(seqnames(ans)))
+    si = seqinfo(annoResource)
+    seqinfo(ans) = si[useq, ]
+    ans
+}
+
 
 getTxDb = function(x) {
    if (is(x, "TxDb")) return(x)
@@ -22,7 +38,7 @@ modTrack = function(symbol,
    getter=exonsBy, byattr="gene", expansion=0,
    collapseTranscripts="meta") {
  require(Gviz)
- m1 = genemodel(symbol, annoResource=annoResource)
+ m1 = genemodel(key=symbol, annoResource=annoResource)
  thechr = as.character(seqnames(m1)[1])
  st = min(start(m1)) - expansion
  en = max(end(m1)) + expansion

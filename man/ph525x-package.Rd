@@ -35,7 +35,8 @@ LazyLoad: yes
 
 
 Software that can be used with the ph525x course that is not
-yet in a CRAN or Bioconductor package.
+yet in a CRAN or Bioconductor package.  An illustrative vignette
+is available.
 
 }
 \author{
@@ -55,4 +56,5 @@ VJ Carey
 %}
 \examples{
 ph525x() # verify installation
+viewHreads14()
 }
