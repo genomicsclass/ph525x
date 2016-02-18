@@ -62,7 +62,6 @@ dfHclust = function(df) {
 # data frame in use and plot are updated
 #
    server <- function(input, output) {
-     data(mtcars)
      output$plot1 <- renderPlot({
        xv = df[,input$vars]
        plot(hclust(dist(data.matrix(xv),method=input$dmeth), method=input$meth),
