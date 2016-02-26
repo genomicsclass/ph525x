@@ -18,7 +18,7 @@ curgNeigh = subsetByOverlaps(allg, curgAddr+radius)
 if (must_concat) curgNeigh = c(curgNeigh, curgAddr)
 curgNeigh$symbol = mapIds(Homo.sapiens, keys=curgNeigh$gene_id, keytype="ENTREZID",
   column="SYMBOL")
-sc = subsetByOverlaps(bindingGR, curgNeigh)
+sc = subsetByOverlaps(bindingGR, range(curgNeigh))
 message("getting ideogram...")
 idxTrack = IdeogramTrack(genome="hg19", chr=as.character(seqnames(curgNeigh[1])))
 message("done.")
