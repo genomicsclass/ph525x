@@ -23,10 +23,10 @@ totalgd = function (gr)
     gr$totalgd = GenomicRanges::start(gr) + off[as.character(seqnames(gr))]
     gr
 }
-rainfall = function (mut, colmap = kataColors(), oind=1, ptcex=.1, 
+rainfall = function (mut, colmap = kataColors(), oind=1, ptcex=.3, 
   dodensity=TRUE, inbw=1000, dvscale=2, ...,
-  splitter="Tumor_Sample_Barcode", legcex=.8, legy=7, legxdenom=3,
-  xaxgen=rainxax, ymax=8)
+  splitter="Tumor_Sample_Barcode", legcex=.8, legy=8.5, legxdenom=3,
+  xaxgen=rainxax, ymax=9)
 {
 #
 # takes complete TCGA mutation structure, splits by id, sorts
