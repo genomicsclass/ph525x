@@ -80,7 +80,7 @@ rainfall = function (mut, colmap = kataColors(), oind=1, ptcex=.3,
     gg3 = totalgd(gg3)
     di = c(1, log10(diff(gg3$totalgd) + 1))
     plot(x = gg3$totalgd, y = di, col = colmap[gg3$subst], pch = 19, axes=FALSE,
-        ylab="log10 dbp", cex=ptcex, ylim=c(0,ymax), ...)
+        ylab="log10 dbp", cex=ptcex, ylim=c(0,ymax), xlab="chromosome", ...)
     axis(2)
     box()
     glen = sum(as.numeric(seqlengths(Homo.sapiens))[1:24])
