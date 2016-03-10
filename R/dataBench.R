@@ -5,7 +5,8 @@
 #
 
 .h5RoundTrip = function(x, chunkIn=c(1000,10), inLevel=0, intimes=1) {
-system("rm -rf ex_hdf5file.h5")
+#system("rm -rf ex_hdf5file.h5")
+if (file.exists("ex_hdf5file.h5")) file.remove("ex_hdf5file.h5")
 require(rhdf5)
 h5createFile("ex_hdf5file.h5")
 h5createDataset("ex_hdf5file.h5", "x", c(nrow(x),ncol(x)), 
@@ -19,6 +20,7 @@ list(mwrite=mw, ingFull=mr, ing1K=msel, times=intimes, method="hdf5")
 
 .ffRoundTrip = function(x, chunkIn=c(5000,10), inLevel=0, intimes=1) {
 system("rm -rf ex_ff.ff")
+if (file.exists("ex_ff.ff")) file.remove("ex_ff.ff")
 require(ff)
 dx = dim(x)
 mw = microbenchmark({
@@ -38,7 +40,9 @@ list(mwrite=mw, ingFull=mr, ing1K=msel, times=intimes, method="ff")
 }
 
 .bmRoundTrip = function(x, intimes=1) {
-system("rm -rf ex_bm.bm ex_bm.desc")
+#system("rm -rf ex_bm.bm ex_bm.desc")
+if (file.exists("ex_bm.bm")) file.remove("ex_bm.bm")
+if (file.exists("ex_bm.bm.desc")) file.remove("ex_bm.bm.desc")
 require(bigmemory)
 dx = dim(x)
 mw = microbenchmark({
@@ -55,7 +59,8 @@ list(mwrite=mw, ingFull=mr, ing1K=msel, times=intimes, method="bigmemory")
 
 
 .slRoundTrip = function(x, intimes=1) {
-system("rm -rf ex_sqlite.sqlite")
+#system("rm -rf ex_sqlite.sqlite")
+if (file.exists("ex_sqlite.sqlite")) file.remove("ex_sqlite.sqlite")
 Sys.sleep(1)
 stopifnot(!file.exists("ex_sqlite.sqlite"))
 library(RSQLite)
@@ -72,7 +77,8 @@ list(mwrite=mw, ingFull=mr, ing1K=msel, times=intimes, method="sqlite")
 }
 
 .dtRoundTrip = function(x, intimes=1) {
-system("rm -rf ex_dt.rda")
+#system("rm -rf ex_dt.rda")
+if (file.exists("ex_dt.rda")) file.remove("ex_dt.rda")
 Sys.sleep(1)
 library(data.table)
 mw = microbenchmark({
