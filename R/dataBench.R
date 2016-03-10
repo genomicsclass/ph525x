@@ -57,6 +57,10 @@ mr = microbenchmark(xin <- xbm[,], times=intimes)
 msel = microbenchmark({xin2 <- xbm[4001:5000,]}, times=intimes)
 stopifnot(all.equal(xin2, x[4001:5000,]))
 indl = list(3001:4000, 4001:5000)
+rm(xbm)
+gc()
+if (file.exists("ex_bm.bm")) file.remove("ex_bm.bm")
+if (file.exists("ex_bm.bm.desc")) file.remove("ex_bm.bm.desc")
 list(mwrite=mw, ingFull=mr, ing1K=msel, times=intimes, method="bigmemory")
 }
 
