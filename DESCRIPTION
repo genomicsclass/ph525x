@@ -1,6 +1,6 @@
 Package: ph525x
 Title: support functions and data for edX course PH525
-Version: 0.0.35
+Version: 0.0.36
 Author: VJ Carey <stvjc@channing.harvard.edu> and others
 Description: basic functions not yet in released software
 Suggests: TxDb.Hsapiens.UCSC.hg19.knownGene,        
