@@ -19,7 +19,7 @@ list(mwrite=mw, ingFull=mr, ing1K=msel, times=intimes, method="hdf5")
 }
 
 .ffRoundTrip = function(x, chunkIn=c(5000,10), inLevel=0, intimes=1) {
-system("rm -rf ex_ff.ff")
+#system("rm -rf ex_ff.ff")
 if (file.exists("ex_ff.ff")) file.remove("ex_ff.ff")
 require(ff)
 dx = dim(x)
@@ -36,6 +36,9 @@ msel= microbenchmark({
    yff <- xff[4001:5000,]
                   })}, times=intimes)
 stopifnot(all.equal(yff, x[4001:5000,]))
+rm(yff)
+delete(xff)
+rm(xff)
 list(mwrite=mw, ingFull=mr, ing1K=msel, times=intimes, method="ff")
 }
 
@@ -73,6 +76,8 @@ msel = microbenchmark(
    {tmp <- dbGetQuery(con, "select * from x where ind >= 4001 and ind <= 5000")},
    times=intimes
    )
+dbRemoveTable(con, "x")
+dbDisconnect(con)
 list(mwrite=mw, ingFull=mr, ing1K=msel, times=intimes, method="sqlite")
 }
 
