@@ -7,7 +7,7 @@ txdb = TxDb.Hsapiens.UCSC.hg19.knownGene
 eid = select(Homo.sapiens, keys=sym, keytype="SYMBOL", columns="ENTREZID")
 allg = genes(txdb) # multistrand are dropped
 must_concat = FALSE
-curgAddr = genes(txdb, single.strand=FALSE, vals=list(gene_id=eid$ENTREZID) )[[1]]
+curgAddr = genes(txdb, single.strand=FALSE, filter=list(gene_id=eid$ENTREZID) )[[1]]
 if (length(curgAddr)>1) {
    must_concat = TRUE
    curgAddr$gene_id = eid$ENTREZID
