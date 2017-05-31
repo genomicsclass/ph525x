@@ -26,7 +26,7 @@ totalgd = function (gr)
 rainfall = function (mut, colmap = kataColors(), oind=1, ptcex=.3, 
   dodensity=TRUE, inbw=1000, dvscale=2, ...,
   splitter="Tumor_Sample_Barcode", legcex=.8, legy=8.5, legxdenom=3,
-  xaxgen=rainxax, ymax=9)
+  xaxgen=rainxax, ymax=9, na.rm=TRUE)
 {
 #
 # takes complete TCGA mutation structure, splits by id, sorts
@@ -88,7 +88,9 @@ rainfall = function (mut, colmap = kataColors(), oind=1, ptcex=.3,
     abline(v=cumsum(as.numeric(seqlengths(gg3))), lty=2)
     title(mcols(gg3)[["Tumor_Sample_Barcode"]][1])
     if (dodensity) {
-       myd = density(gg3$totalgd, bw=inbw)
+       resp = gg3$totalgd
+       if (na.rm) resp = na.omit(resp)
+       myd = density(resp, bw=inbw)
        lines(myd$x, dvscale*(myd$y/max(myd$y)))
        }
     if (!is.null(xaxgen)) xaxgen()

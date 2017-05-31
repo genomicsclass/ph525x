@@ -23,7 +23,8 @@ l2df = function(x, coln=c("snpid", "geneloc")) {
 }
 
 
-sglistToDF = function(sgl, slocpack=SNPlocs.Hsapiens.dbSNP144.GRCh37) {
+sglistToDF = function(sgl, slocpack=SNPlocs.Hsapiens.dbSNP144.GRCh37,
+   na.rm=TRUE) {
  sn = names(sgl)
  snlocs = snpsById( slocpack, sn, ifnotfound="drop" )
  avail = snlocs$RefSNP_id
@@ -39,7 +40,7 @@ sglistToDF = function(sgl, slocpack=SNPlocs.Hsapiens.dbSNP144.GRCh37) {
  merge(sldf, gdf, by="snpid")
 }
 
-sglToCircos = function(sgl) {
+sglToCircos = function(sgl, na.rm=TRUE) {
 require(SNPlocs.Hsapiens.dbSNP144.GRCh37)
 require(Homo.sapiens)
 
@@ -56,6 +57,7 @@ RCircos.Set.Core.Components(cyto.info, chr.exclude=NULL, tracks.inside=4,
    tracks.outside=0)
 RCircos.Set.Plot.Area();
 RCircos.Chromosome.Ideogram.Plot();
+if (na.rm) myd = na.omit(myd)
 RCircos.Link.Plot(myd, track.num=4)
 RCircos.Env$RCircos.PlotPar$text.size = .6
 
