@@ -38,3 +38,4 @@ export(wikiCentralDogma)
 export(workflows) 
 export(metadb) 
 
+export(multScan)
