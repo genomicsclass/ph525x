@@ -39,3 +39,6 @@ export(workflows)
 export(metadb) 
 
 export(multScan)
+export(boosStefRP)
+export(johnson1)
+export(johnson2)
